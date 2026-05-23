@@ -2,22 +2,22 @@
 
 ## Status
 
-Draft. The product direction is a SaaS/app brain with a UI, but the concrete stack and deployment model are not decided yet.
+Draft. The concrete product shape, stack, and deployment model are not decided yet.
 
 ## Intended Shape
 
-Amistio should become a product brain that helps define, remember, plan, and execute software work through a structured control plane:
+Replace this section with the intended system shape for the repository created from this template. Start with enough structure to guide decisions before implementation:
 
-- Context and architecture understanding
-- ADRs and product decisions
-- Feature specs and plans
-- Prompt generation
-- Memory and lessons learned
-- Future UI/workflow for operating the brain
+- Primary user surface
+- Product modules or service boundaries
+- Data and persistence needs
+- External integrations
+- Deployment and operational model
+- Verification strategy
 
 ## Open Decisions
 
-- Web SaaS, desktop app, CLI/TUI, or hybrid first surface
+- Web app, desktop app, CLI/TUI, service, library, or hybrid first surface
 - Hosted backend and database requirements
 - Auth and billing model
 - Execution model: manual prompt execution, local runner, or future cloud execution

@@ -1,13 +1,13 @@
 ---
-id: S-BOOTSTRAP-ORCHESTRATOR
-title: Bootstrap Orchestrator In A New Repo
+id: S-BOOTSTRAP-CONTROL-PLANE
+title: Bootstrap Control Plane In A New Repo
 status: Template
 date: 2026-05-15
 target: shared
-tags: [prompt, bootstrap, orchestrator, product-factory]
+tags: [prompt, bootstrap, control-plane, project-brain]
 ---
 
-# Bootstrap Orchestrator In A New Repo
+# Bootstrap Control Plane In A New Repo
 
 ## Goal
 
@@ -18,9 +18,10 @@ The result should make this repo self-documenting and agent-friendly. When I ask
 ## Operating Rules
 
 - Inspect this repository first.
+- Ask for missing intake facts before creating product-specific plans: project name, target users, problem, first outcome, existing source boundaries, stack constraints, integrations, verification commands, and the first decision/spec/plan to draft.
 - Do not rewrite, reorganize, or refactor product code.
 - Do not modify app/source files unless I explicitly approve implementation mode.
-- Prefer creating or updating orchestration/documentation files only.
+- Prefer creating or updating control-plane/documentation files only.
 - Preserve existing README files, package files, source code, configs, test setup, and deployment notes.
 - If existing agent, instruction, memory, docs, or architecture files exist, merge carefully instead of overwriting.
 - Use this repository's actual stack, folders, product names, test commands, and conventions.

@@ -1,25 +1,31 @@
-<p align="center">
-	<a href="http://www.amistio.com/">
-		<img src="assets/amistio-logo.svg" alt="Amistio logo" width="96" />
-	</a>
-</p>
+# Project Brain Template
 
-# Amistio Template
-
-[http://www.amistio.com/](http://www.amistio.com/)
-
-A reusable `docs/`-based control-plane template for shaping a SaaS/app product brain before product code exists.
+A reusable `docs/`-based control-plane template for shaping a product or project brain before product code exists.
 
 This repository is intentionally lightweight. It gives future projects a place to define product context, architecture, ADRs, feature specs, memory, execution plans, workflows, and implementation prompts before the first app folder appears.
 
 ## Use This Template
 
 1. Create a new repository from this template.
-2. Rename the project and update product assumptions in `README.md`, `AGENTS.md`, `.github/copilot-instructions.md`, `docs/context/product.md`, and `docs/architecture/overview.md`.
-3. Fill in the first product context and open questions under `docs/context/`.
+2. Replace template placeholders in `README.md`, `AGENTS.md`, `.github/copilot-instructions.md`, `docs/context/product.md`, and `docs/architecture/overview.md`.
+3. Answer the intake questions below and record the first product context under `docs/context/`.
 4. Create the first product-definition plan in `docs/plans/` from `docs/plans/_template.md`.
 5. Record real architecture and stack choices as ADRs in `docs/decisions/` before adding source code.
 6. Add product code only after the MVP behavior is captured in `docs/features/` and the initial stack decision is accepted.
+
+## First User Intake
+
+When a new repo is created from this template, ask the user for:
+
+- The project name, one-sentence purpose, and target users.
+- The main problem the product or workflow should solve.
+- The first valuable outcome or MVP behavior.
+- Whether this is a new product, an existing codebase, or a documentation/control-plane retrofit.
+- Preferred stack, deployment target, and hard constraints.
+- Required integrations, data sources, auth, billing, storage, or compliance needs.
+- What should stay unchanged, including existing source code, configs, workflows, and docs.
+- The expected verification commands once implementation exists.
+- The first decision, feature spec, or plan the agent should draft.
 
 ## What This Template Provides
 
@@ -42,7 +48,7 @@ docs/features/                    Feature/spec template and future specs
 docs/memory/                      Memory templates, patterns, and mistakes
 docs/plans/                       Work-plan template and future plans
 docs/prompts/                     Reusable and generated prompts
-docs/workflows/                   Repeatable orchestrator workflows
+docs/workflows/                   Repeatable agent workflows
 ```
 
 Future product code can live under `src/`, `apps/`, `packages/`, `services/`, or another structure after the product direction is defined.

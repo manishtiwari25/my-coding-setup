@@ -1,6 +1,6 @@
-# Workflow - Bootstrap Orchestrator In Another Repo
+# Workflow - Bootstrap Control Plane In Another Repo
 
-Use this workflow when setting up another repository with an Amistio-style control plane.
+Use this workflow when setting up another repository with a `docs/` control plane.
 
 ## Steps
 
@@ -13,5 +13,5 @@ Use this workflow when setting up another repository with an Amistio-style contr
 
 ## Layout Rule
 
-- Prefer `docs/` control-plane folders for new Amistio-style scaffolds.
+- Prefer `docs/` control-plane folders for new project-brain scaffolds.
 - Preserve an existing documented layout if the target repository already has one.

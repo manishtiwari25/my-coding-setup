@@ -1,4 +1,4 @@
-# Copilot Instructions - Amistio Template SaaS Brain Scaffold
+# Copilot Instructions - Project Brain Template
 
 Use `AGENTS.md` as the primary operating guide. This repository is a reusable template with a `docs/`-based control plane: `docs/architecture/`, `docs/context/`, `docs/decisions/`, `docs/features/`, `docs/memory/`, `docs/plans/`, `docs/prompts/`, and `docs/workflows/`.
 
@@ -9,7 +9,7 @@ Use `AGENTS.md` as the primary operating guide. This repository is a reusable te
 - Do not assume any previous product architecture still exists.
 - Create ADRs, feature specs, plans, prompts, or memory notes only when they are relevant to the new direction.
 - Modify product/source code only when the user explicitly asks for implementation.
-- Do not create or require a repo-local `.amistio/` folder.
+- Do not create or require a repo-local hidden control folder.
 - Do not guess missing context. Inspect files or ask.
 
 ## Template Behavior

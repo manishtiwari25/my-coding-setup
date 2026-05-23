@@ -7,12 +7,12 @@ Instructions for Claude-based agents working in this repository.
 - Read `AGENTS.md` first and treat it as the primary operating guide.
 - Use the `docs/` control-plane folders as the source of truth: `docs/architecture/`, `docs/context/`, `docs/decisions/`, `docs/features/`, `docs/memory/`, `docs/plans/`, `docs/prompts/`, and `docs/workflows/`.
 - Keep this source repository generic, reusable, and product-code-free until a repo created from it defines a real product direction.
-- Do not create parallel root-level control-plane folders or a repo-local `.amistio/` folder.
+- Do not create parallel root-level control-plane folders or a repo-local hidden control folder.
 - Do not assume stale product architecture or implementation choices. Inspect files or ask when context is missing.
 
 ## Operating Mode
 
-- Default to orchestrator/template mode: clarify direction, read relevant control-plane context, and update plans, prompts, ADRs, feature specs, workflows, or memory only when they are useful.
+- Default to planning/template mode: clarify direction, read relevant control-plane context, and update plans, prompts, ADRs, feature specs, workflows, or memory only when they are useful.
 - Enter implementation mode only when the user explicitly asks for product/source changes and the target product structure exists.
 - Prefer durable template improvements over one-off project artifacts when maintaining this template repository.
 - Keep prompts, workflows, and guidance model-agnostic unless the file is explicitly a tool-specific entry point like this one.

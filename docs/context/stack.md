@@ -6,7 +6,7 @@ Not decided.
 
 ## Candidates To Decide
 
-- UI surface: web SaaS, desktop app, CLI/TUI, or hybrid
+- Product surface: web app, desktop app, CLI/TUI, service, library, or hybrid
 - Frontend framework
 - Backend runtime
 - Database/storage
