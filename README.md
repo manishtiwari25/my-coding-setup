@@ -1,4 +1,12 @@
+<p align="center">
+	<a href="http://www.amistio.com/">
+		<img src="assets/amistio-logo.svg" alt="Amistio logo" width="96" />
+	</a>
+</p>
+
 # Amistio Template
+
+[http://www.amistio.com/](http://www.amistio.com/)
 
 A reusable root-level control-plane template for shaping a SaaS/app product brain before product code exists.
 
