@@ -1,0 +1,69 @@
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+!.env.*.example
+
+# Credentials
+credentials
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Generated output
+dist/
+build/
+coverage/
+*.out
+
+# JavaScript / TypeScript
+node_modules/
+.next/
+.nuxt/
+.svelte-kit/
+.turbo/
+.vite/
+out/
+.nyc_output/
+
+# .NET
+bin/
+obj/
+TestResults/
+
+# Python
+__pycache__/
+*.py[cod]
+.python-version
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Local caches and temp files
+.cache/
+tmp/
+temp/
