@@ -59,13 +59,13 @@ Future product code may live in `src/`, `apps/`, `packages/`, `services/`, or an
 
 ## Routing
 
-| Request Type              | Read First                                                                                                     | Write To                                                            |
-| ------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| New product idea          | `docs/context/`, `docs/memory/`, `docs/decisions/`, `docs/architecture/`                                       | `docs/plans/`, `docs/features/`, `docs/decisions/`, `docs/prompts/` |
-| Architecture decision     | `docs/decisions/`, `docs/architecture/`, `docs/context/`                                                       | `docs/decisions/`, `docs/architecture/`, `docs/memory/`             |
-| Feature prompt generation | `docs/features/`, `docs/context/`, `docs/memory/`                                                              | `docs/prompts/`                                                     |
-| Learning or mistake       | `docs/memory/`                                                                                                 | `docs/memory/`                                                      |
-| Template maintenance      | `AGENTS.md`, `README.md`, `.github/copilot-instructions.md`, `docs/*/README.md`                                | durable template docs/config                                        |
+| Request Type              | Read First                                                                                                       | Write To                                                            |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| New product idea          | `docs/context/`, `docs/memory/`, `docs/decisions/`, `docs/architecture/`                                         | `docs/plans/`, `docs/features/`, `docs/decisions/`, `docs/prompts/` |
+| Architecture decision     | `docs/decisions/`, `docs/architecture/`, `docs/context/`                                                         | `docs/decisions/`, `docs/architecture/`, `docs/memory/`             |
+| Feature prompt generation | `docs/features/`, `docs/context/`, `docs/memory/`                                                                | `docs/prompts/`                                                     |
+| Learning or mistake       | `docs/memory/`                                                                                                   | `docs/memory/`                                                      |
+| Template maintenance      | `AGENTS.md`, `README.md`, `.github/copilot-instructions.md`, `docs/*/README.md`                                  | durable template docs/config                                        |
 | Bootstrap another repo    | `docs/workflows/bootstrap-control-plane.md`, `docs/prompts/shared/bootstrap-control-plane-in-new-repo.prompt.md` | `docs/prompts/shared/`, `docs/workflows/`                           |
 
 ## Product Direction Notes
