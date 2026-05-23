@@ -55,7 +55,7 @@ List likely failure scenarios and expected behavior.
 
 ## Generated Prompts
 
-- Shared: `prompts/shared/S-XXX-example.md`
+- Shared: `docs/prompts/shared/S-XXX-example.md`
 
 ## Acceptance Criteria
 

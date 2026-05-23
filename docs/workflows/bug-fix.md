@@ -6,4 +6,4 @@
 4. Create a plan when the fix is non-trivial.
 5. Implement only the requested fix.
 6. Verify with focused tests or manual checks.
-7. Update `memory/mistakes.md` if the lesson is durable.
+7. Update `docs/memory/mistakes.md` if the lesson is durable.

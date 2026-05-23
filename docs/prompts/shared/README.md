@@ -1,6 +1,6 @@
 # Shared Prompts
 
-Shared prompt templates used by the root control plane.
+Shared prompt templates used by the `docs/` control plane.
 
 ## Files
 

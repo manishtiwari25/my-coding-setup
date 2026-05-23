@@ -11,7 +11,7 @@ tags: [prompt, bootstrap, orchestrator, product-factory]
 
 ## Goal
 
-Set up this repository with an agent-friendly root control plane: agent instructions, architecture, project context, memory templates, decision records, feature specs, workflows, and model-agnostic prompt templates.
+Set up this repository with an agent-friendly `docs/` control plane: agent instructions, architecture, project context, memory templates, decision records, feature specs, workflows, and model-agnostic prompt templates.
 
 The result should make this repo self-documenting and agent-friendly. When I ask for a feature, bug fix, architectural decision, or product change, the agent should first read project context, memory, and decisions, then create or update specs and prompts before touching product code unless I explicitly ask for direct implementation.
 
@@ -33,17 +33,17 @@ Create or update these files and folders as appropriate for this repo:
 ```text
 AGENTS.md
 .github/copilot-instructions.md
-architecture/
-context/
-decisions/
-features/
-memory/
-plans/
-prompts/
-workflows/
+docs/architecture/
+docs/context/
+docs/decisions/
+docs/features/
+docs/memory/
+docs/plans/
+docs/prompts/
+docs/workflows/
 ```
 
-If the repository is a normal product repo rather than an orchestrator/product-brain repo, consider putting the control plane under `docs/` instead. If it is itself a brain/orchestrator product, prefer root folders.
+Keep the control plane under `docs/` unless an existing repository convention or an explicit ADR requires another layout.
 
 ## Validation
 

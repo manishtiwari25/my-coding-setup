@@ -41,6 +41,6 @@ Describe the chosen option and why.
 
 ## Follow-Up
 
-- [ ] Update relevant architecture/context files
+- [ ] Update relevant `docs/architecture/` and `docs/context/` files
 - [ ] Generate prompts if implementation work follows
 - [ ] Record memory if this creates a reusable lesson

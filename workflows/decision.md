@@ -1,8 +1,0 @@
-# Workflow - Decision
-
-1. Clarify the decision to be made.
-2. Read existing `decisions/`, `architecture/`, `context/`, and `memory/`.
-3. Compare realistic options with pros and cons.
-4. Create an ADR from `decisions/_template.md`.
-5. Update affected architecture/context files.
-6. Update memory if the decision creates a reusable rule.

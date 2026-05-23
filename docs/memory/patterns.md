@@ -6,7 +6,7 @@ No reusable patterns recorded yet.
 
 - A coding, testing, planning, or review pattern proves useful more than once.
 - A repository convention should guide future implementation.
-- A workflow rule is not already captured better in `AGENTS.md` or `workflows/`.
+- A workflow rule is not already captured better in `AGENTS.md` or `docs/workflows/`.
 
 ## Entry Format
 

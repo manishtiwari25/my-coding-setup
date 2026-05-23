@@ -8,22 +8,22 @@
 
 [http://www.amistio.com/](http://www.amistio.com/)
 
-A reusable root-level control-plane template for shaping a SaaS/app product brain before product code exists.
+A reusable `docs/`-based control-plane template for shaping a SaaS/app product brain before product code exists.
 
 This repository is intentionally lightweight. It gives future projects a place to define product context, architecture, ADRs, feature specs, memory, execution plans, workflows, and implementation prompts before the first app folder appears.
 
 ## Use This Template
 
 1. Create a new repository from this template.
-2. Rename the project and update product assumptions in `README.md`, `AGENTS.md`, `.github/copilot-instructions.md`, `context/product.md`, and `architecture/overview.md`.
-3. Fill in the first product context and open questions under `context/`.
-4. Create the first product-definition plan in `plans/` from `plans/_template.md`.
-5. Record real architecture and stack choices as ADRs in `decisions/` before adding source code.
-6. Add product code only after the MVP behavior is captured in `features/` and the initial stack decision is accepted.
+2. Rename the project and update product assumptions in `README.md`, `AGENTS.md`, `.github/copilot-instructions.md`, `docs/context/product.md`, and `docs/architecture/overview.md`.
+3. Fill in the first product context and open questions under `docs/context/`.
+4. Create the first product-definition plan in `docs/plans/` from `docs/plans/_template.md`.
+5. Record real architecture and stack choices as ADRs in `docs/decisions/` before adding source code.
+6. Add product code only after the MVP behavior is captured in `docs/features/` and the initial stack decision is accepted.
 
 ## What This Template Provides
 
-- Agent operating instructions that make the root control plane canonical.
+- Agent operating instructions that make the `docs/` control plane canonical.
 - Product and stack context files for early discovery.
 - ADR, feature spec, plan, memory, workflow, and prompt templates.
 - Shared prompts for bootstrapping another repo, code style, feature implementation, and review.
@@ -35,45 +35,45 @@ This repository is intentionally lightweight. It gives future projects a place t
 AGENTS.md                         Primary operating guide for coding agents
 CLAUDE.md                         Claude-specific entrypoint that delegates to AGENTS.md
 .github/copilot-instructions.md   Concise Copilot entrypoint
-architecture/                     System architecture and product design
-context/                          Product and stack context
-decisions/                        ADR template and future decisions
-features/                         Feature/spec template and future specs
-memory/                           Memory templates, patterns, and mistakes
-plans/                            Work-plan template and future plans
-prompts/                          Reusable and generated prompts
-workflows/                        Repeatable orchestrator workflows
+docs/architecture/                System architecture and product design
+docs/context/                     Product and stack context
+docs/decisions/                   ADR template and future decisions
+docs/features/                    Feature/spec template and future specs
+docs/memory/                      Memory templates, patterns, and mistakes
+docs/plans/                       Work-plan template and future plans
+docs/prompts/                     Reusable and generated prompts
+docs/workflows/                   Repeatable orchestrator workflows
 ```
 
 Future product code can live under `src/`, `apps/`, `packages/`, `services/`, or another structure after the product direction is defined.
 
 ## Agent Workflow
 
-- Read `AGENTS.md` first, then relevant files in `context/`, `architecture/`, `decisions/`, and `memory/`.
-- Use `plans/` for non-trivial work, `features/` for product behavior, and `decisions/` for architectural choices.
+- Read `AGENTS.md` first, then relevant files in `docs/context/`, `docs/architecture/`, `docs/decisions/`, and `docs/memory/`.
+- Use `docs/plans/` for non-trivial work, `docs/features/` for product behavior, and `docs/decisions/` for architectural choices.
 - Keep prompts model-agnostic and testable.
 - Do not introduce product source code until the product direction, MVP behavior, and initial stack are documented.
-- Update `memory/` only when a durable convention, product rule, lesson, or mistake appears.
+- Update `docs/memory/` only when a durable convention, product rule, lesson, or mistake appears.
 
 ## First Product Pass
 
 For a new project created from this template, start with these files:
 
 ```text
-context/product.md
-context/stack.md
-architecture/overview.md
-plans/_template.md
-decisions/_template.md
-features/_template.md
+docs/context/product.md
+docs/context/stack.md
+docs/architecture/overview.md
+docs/plans/_template.md
+docs/decisions/_template.md
+docs/features/_template.md
 ```
 
 The first useful deliverables are usually:
 
-- A product-definition plan in `plans/`.
-- An initial MVP feature spec in `features/`.
-- An ADR for the first user surface and stack in `decisions/`.
-- A short prompt in `prompts/` that can hand implementation work to an agent once the product boundary is clear.
+- A product-definition plan in `docs/plans/`.
+- An initial MVP feature spec in `docs/features/`.
+- An ADR for the first user surface and stack in `docs/decisions/`.
+- A short prompt in `docs/prompts/` that can hand implementation work to an agent once the product boundary is clear.
 
 ## Template Publishing Checklist
 
