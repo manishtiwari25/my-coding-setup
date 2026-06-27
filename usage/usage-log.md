@@ -7,8 +7,8 @@ Per-session work-accounting ledger. Each row records the **real usage reported b
 - **Never fabricate.** If the runtime does not expose an exact figure, record what the runner's usage view shows and label unreadable values `≈ estimate`.
 - The GitHub Copilot event log records **output tokens + a context snapshot**, but **not** exact per-turn input tokens and **not** the AIC counter; paste the AIC value from the CLI status line (`Session: N AIC used`). See [`scripts/usage-snapshot.sh`](../scripts/usage-snapshot.sh).
 
-| Date       | Session  | Model(s)                       | Cost (unit)             | Output tokens | Turns | Summary                                                  |
-| ---------- | -------- | ------------------------------ | ----------------------- | ------------- | ----- | -------------------------------------------------------- |
-| 2026-06-27 | a1b2c3d4 | claude-opus-4 (GitHub Copilot) | ~5 AIC used @ 14:32 †   | 12,480        | 7     | Example row — add Work Accounting rule, ledger & script. |
+| Date       | Session  | Model(s)                       | Cost (unit)           | Output tokens | Turns | Summary                                                  |
+| ---------- | -------- | ------------------------------ | --------------------- | ------------- | ----- | -------------------------------------------------------- |
+| 2026-06-27 | a1b2c3d4 | claude-opus-4 (GitHub Copilot) | ~5 AIC used @ 14:32 † | 12,480        | 7     | Example row — add Work Accounting rule, ledger & script. |
 
 † Interim, timestamped snapshot — counters were still climbing at the recorded time; finalize at session close.
