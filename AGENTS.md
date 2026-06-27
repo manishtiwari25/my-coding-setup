@@ -36,6 +36,37 @@ Future product code may live in `src/`, `apps/`, `packages/`, `services/`, or an
 - When creating a new repo from this template, update stale template assumptions in `README.md`, `AGENTS.md`, `.github/copilot-instructions.md`, `docs/context/`, and `docs/architecture/` before implementation.
 - If context is missing, inspect files or ask before inventing requirements.
 
+## Work Accounting & Cost Reporting (required)
+
+End **every** completed task or work response with a Work Accounting footer reporting model, tokens, and cost. Use the real usage the active runner already reports — never guess or estimate from a static price table.
+
+Figures are interim, timestamped snapshots: token counts and credit/AIC/USD counters are cumulative and keep climbing while the session runs, so any committed value is point-in-time and only finalized at session close. If the runtime does not expose an exact figure, report the model plus whatever the runner's usage view shows, and label anything unreadable as `≈ estimate`. Never fabricate. Never omit the footer.
+
+In addition to the footer, append one entry per session to `usage/usage-log.md` (see that file's header for the recording rules). The ledger is agent-driven: there is no automatic git or CLI hook, and the AIC/credit value must be pasted by a human from the runner's status line.
+
+### Per-runner source map
+
+| Runner               | Model source  | Token usage source      | Cost / spend unit                      |
+| -------------------- | ------------- | ----------------------- | -------------------------------------- |
+| GitHub Copilot CLI   | `/model`      | `/context`, `/usage`    | AIC used (status line / `/usage`)      |
+| OpenCode             | runner banner | runner usage output     | direct money (USD)                     |
+| Anthropic/Claude API | request/model | provider response usage | input/output tokens (+ USD if shown)   |
+| Other API runner     | request/model | provider response usage | tokens, or USD if the runner prints it |
+
+### Footer template
+
+Append this block at the very end of the final response:
+
+```text
+---
+### 🧮 Work Accounting
+- Model(s): <actual model id(s)> (+ sub-agent models, if any)
+- Tokens: <input> in / <output> out / <total> total   — source: <Copilot /usage + /context · OpenCode usage · API response>
+- Cost: <runner-native figure as of HH:MM>   — "$0.0123 USD" (OpenCode) · "~N AIC used @ HH:MM, interim" (Copilot) · "≈ estimate" only if nothing is exposed
+```
+
+For GitHub Copilot CLI sessions, `scripts/usage-snapshot.sh` extracts the real model and output-token figures from the local event log; the AIC counter is a live status-line value (`Session: N AIC used`) and must be pasted manually.
+
 ## Template Map
 
 - `docs/decisions/_template.md` for architectural decisions.
