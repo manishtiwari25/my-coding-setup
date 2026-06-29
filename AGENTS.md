@@ -42,16 +42,16 @@ End **every** completed task or work response with a Work Accounting footer repo
 
 Figures are interim, timestamped snapshots: token counts and credit/AIC/USD counters are cumulative and keep climbing while the session runs, so any committed value is point-in-time and only finalized at session close. If the runtime does not expose an exact figure, report the model plus whatever the runner's usage view shows, and label anything unreadable as `≈ estimate`. Never fabricate. Never omit the footer.
 
-In addition to the footer, append one entry per session to `usage/usage-log.md` (see that file's header for the recording rules). The ledger is agent-driven: there is no automatic git or CLI hook, and the AIC/credit value must be pasted by a human from the runner's status line.
+In addition to the footer, append one entry per session to `usage/usage-log.md` (see that file's header for the recording rules). The ledger is agent-driven: there is no automatic git or CLI hook. AIC/credit and exact input/output tokens are written to the local event log when a session closes (`session.shutdown.totalNanoAiu` + `tokenDetails`); for a still-running session, paste the live `Session: N AIC used` value from the runner's status line.
 
 ### Per-runner source map
 
-| Runner               | Model source  | Token usage source      | Cost / spend unit                      |
-| -------------------- | ------------- | ----------------------- | -------------------------------------- |
-| GitHub Copilot CLI   | `/model`      | `/context`, `/usage`    | AIC used (status line / `/usage`)      |
-| OpenCode             | runner banner | runner usage output     | direct money (USD)                     |
-| Anthropic/Claude API | request/model | provider response usage | input/output tokens (+ USD if shown)   |
-| Other API runner     | request/model | provider response usage | tokens, or USD if the runner prints it |
+| Runner               | Model source  | Token usage source      | Cost / spend unit                      | Helper                       |
+| -------------------- | ------------- | ----------------------- | -------------------------------------- | ---------------------------- |
+| GitHub Copilot CLI   | `/model`      | `/context`, `/usage`    | AIC used (status line / `/usage`)      | `scripts/usage-snapshot.sh`  |
+| OpenCode             | runner banner | runner usage output     | direct money (USD)                     | `scripts/usage-opencode.sh`  |
+| Anthropic/Claude API | request/model | provider response usage | input/output tokens (+ USD if shown)   | `scripts/usage-claude.sh`    |
+| Other API runner     | request/model | provider response usage | tokens, or USD if the runner prints it | —                            |
 
 ### Footer template
 
@@ -65,7 +65,7 @@ Append this block at the very end of the final response:
 - Cost: <runner-native figure as of HH:MM>   — "$0.0123 USD" (OpenCode) · "~N AIC used @ HH:MM, interim" (Copilot) · "≈ estimate" only if nothing is exposed
 ```
 
-For GitHub Copilot CLI sessions, `scripts/usage-snapshot.sh` extracts the real model and output-token figures from the local event log; the AIC counter is a live status-line value (`Session: N AIC used`) and must be pasted manually.
+For GitHub Copilot CLI sessions, `scripts/usage-snapshot.sh` reads the local event log. For a **closed** session it reports the canonical `session.shutdown` totals — real input/output/cache tokens, AI units (`totalNanoAiu` ÷ 1e9), and premium-request count. For a **still-running** session it sums main-agent output plus every subagent total as an interim snapshot, and AIC must be pasted from the live status line. Subagent tokens (often the bulk of a fleet session) are always included. For **OpenCode** use `scripts/usage-opencode.sh` (real per-message USD + tokens from `~/.local/share/opencode/storage`); for **Claude Code** use `scripts/usage-claude.sh` (deduped `message.usage` tokens + `costUSD` from `~/.config/claude/projects`).
 
 ## Template Map
 

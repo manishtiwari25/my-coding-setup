@@ -23,7 +23,7 @@ Require Work Accounting on every completed task or work response:
 2. **Committed ledger.** Append one entry per session to `usage/usage-log.md`. Cost is recorded in the runner's native unit (AIC, USD, or token cost).
 3. **Interim vs. finalized.** Figures are point-in-time, timestamped snapshots; values are finalized at session close. Anything the runtime does not expose is labeled `≈ estimate`. Never fabricate, never omit.
 4. **Per-runner units.** The per-runner source map in `AGENTS.md` defines where model, tokens, and cost come from for each runner.
-5. **Copilot CLI helper.** `scripts/usage-snapshot.sh` reads the Copilot CLI local event log for real model/output-token/context figures. The AIC counter is a live status-line value and is **not** in the log; a human pastes it from `Session: N AIC used`.
+5. **Copilot CLI helper.** `scripts/usage-snapshot.sh` reads the Copilot CLI local event log for real figures. For a closed session it reports the canonical `session.shutdown` totals — real input/output/cache tokens, AI units (`totalNanoAiu` ÷ 1e9 ≈ AIC), and premium-request count — and always sums subagent tokens. For a still-running session it gives an interim main+subagent sum and the AIC is pasted from the live `Session: N AIC used` status line.
 
 The rule is recorded in the agent-instruction surfaces: `AGENTS.md` (full source map + footer template), with concise pointers in `.github/copilot-instructions.md` and `CLAUDE.md`.
 
@@ -40,7 +40,7 @@ This decision introduces two root-level directories — `usage/` (the committed 
 ### Negative
 
 - The ledger is agent-driven: there is no automatic git or CLI hook, so an agent (or human) must remember to append the row.
-- The AIC/credit value requires a manual paste from the runner status line.
+- The AIC/credit value is finalized in the log at session close (`totalNanoAiu`); only a still-running session needs a manual paste from the status line.
 - Mid-session rows are interim and must be reconciled at session close.
 
 ## Follow-Up
@@ -48,4 +48,5 @@ This decision introduces two root-level directories — `usage/` (the committed 
 - [x] Add the Work Accounting section to the agent-instruction files.
 - [x] Create `usage/usage-log.md` with recording rules and an example row.
 - [x] Add `scripts/usage-snapshot.sh` for Copilot CLI sessions.
+- [x] Add `scripts/usage-opencode.sh` (OpenCode, real USD) and `scripts/usage-claude.sh` (Claude Code, ccusage schema).
 - [ ] Revisit if a runner exposes a reliable automated per-session cost export.

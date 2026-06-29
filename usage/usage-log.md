@@ -5,7 +5,7 @@ Per-session work-accounting ledger. Each row records the **real usage reported b
 - **Cost is the runner's native unit:** AIC (GitHub Copilot CLI), USD (OpenCode / paid APIs), or token cost. Record the value shown by that runner's own usage view.
 - **Figures are cumulative, live counters.** Token counts and credit/AIC/USD totals keep climbing while a session runs. Record the value at **session close**; any row added mid-session is an **interim, timestamped snapshot** (mark it with `†` and the time).
 - **Never fabricate.** If the runtime does not expose an exact figure, record what the runner's usage view shows and label unreadable values `≈ estimate`.
-- The GitHub Copilot event log records **output tokens + a context snapshot**, but **not** exact per-turn input tokens and **not** the AIC counter; paste the AIC value from the CLI status line (`Session: N AIC used`). See [`scripts/usage-snapshot.sh`](../scripts/usage-snapshot.sh).
+- When a session **closes**, the Copilot event log records the canonical totals: real input/output/cache tokens (`session.shutdown.tokenDetails`), AI units (`totalNanoAiu` ÷ 1e9 ≈ AIC), and premium-request count. For a **live** session those aren't finalized yet — sum main + subagent output and paste the AIC from the status line (`Session: N AIC used`). See [`scripts/usage-snapshot.sh`](../scripts/usage-snapshot.sh).
 
 | Date       | Session  | Model(s)                       | Cost (unit)           | Output tokens | Turns | Summary                                                  |
 | ---------- | -------- | ------------------------------ | --------------------- | ------------- | ----- | -------------------------------------------------------- |
