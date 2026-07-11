@@ -14,7 +14,7 @@ Sync state lives in `.template-sync` at the repo root (JSON):
 
 ```json
 {
-  "templateUrl": "https://github.com/bitesinbyte/amistio-template.git",
+  "templateUrl": "https://github.com/manishtiwari25/my-coding-setup.git",
   "templateBranch": "main",
   "lastSyncedCommit": "<sha>",
   "lastSyncedAt": "<YYYY-MM-DD>"
