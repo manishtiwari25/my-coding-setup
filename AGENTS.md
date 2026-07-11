@@ -105,6 +105,7 @@ Collector details: **Copilot CLI** (`usage-copilot.sh`) reads the local event lo
 | Learning or mistake       | `docs/memory/`                                                                                                   | `docs/memory/`                                                      |
 | Template maintenance      | `AGENTS.md`, `README.md`, `.github/copilot-instructions.md`, `docs/*/README.md`                                  | durable template docs/config                                        |
 | Bootstrap another repo    | `docs/workflows/bootstrap-control-plane.md`, `docs/prompts/shared/bootstrap-control-plane-in-new-repo.prompt.md` | `docs/prompts/shared/`, `docs/workflows/`                           |
+| Sync repo with template   | `docs/workflows/template-sync.md`, `.template-sync`                                                              | sync-safe template files, `.template-sync`                          |
 
 ## Product Direction Notes
 

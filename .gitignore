@@ -63,6 +63,9 @@ venv/
 .coverage
 htmlcov/
 
+# Claude Code local settings (machine-specific permissions)
+.claude/settings.local.json
+
 # Local caches and temp files
 .cache/
 tmp/
