@@ -1,7 +1,7 @@
 ---
 id: ADR-002
 title: Work Accounting — Per-Task Model, Token & Cost Reporting
-status: Accepted
+status: Accepted (amended 2026-07-11)
 date: 2026-06-27
 areas: [agents, operations, documentation]
 tags: [adr, work-accounting, cost, tokens, observability]
@@ -27,7 +27,9 @@ Require Work Accounting on every completed task or work response:
 
 The rule is recorded in the agent-instruction surfaces: `AGENTS.md` (full source map + footer template), with concise pointers in `.github/copilot-instructions.md` and `CLAUDE.md`.
 
-This decision introduces two root-level directories — `usage/` (the committed ledger) and `scripts/` (operational tooling). These are operational, not control-plane, folders; per ADR-001 a later ADR may bless such additions, and this ADR does so explicitly. The `docs/` control plane remains canonical.
+This decision originally introduced two root-level directories — `usage/` (the committed ledger) and `scripts/` (operational tooling). **Amended 2026-07-11:** both were relocated under the `docs/` control plane as `docs/usage/` and `docs/scripts/`, so the repository keeps a single canonical control-plane root and no parallel root-level folders exist.
+
+**Amended 2026-07-11 (helpers):** `scripts/usage-snapshot.sh` was renamed to `docs/scripts/usage-copilot.sh` (now also tracks mid-session `session.model_change`). New collectors were added — `usage-codex.sh` (OpenAI Codex CLI/IDE, session-cumulative `total_token_usage`), `usage-vscode.sh` (VS Code Copilot Chat — sessions/models/turns only; VS Code stores no local token/cost data), and `usage-cursor.sh` (Cursor — sessions only; spend is server-side). `usage-claude.sh` no longer prints a fabricated `$0.0000` — subscription-plan logs carry no `costUSD`, so cost reads `n/a (plan)`. A unified dispatcher `docs/scripts/usage.sh` auto-detects installed harnesses and runs the matching collectors.
 
 ## Consequences
 
@@ -46,7 +48,8 @@ This decision introduces two root-level directories — `usage/` (the committed 
 ## Follow-Up
 
 - [x] Add the Work Accounting section to the agent-instruction files.
-- [x] Create `usage/usage-log.md` with recording rules and an example row.
-- [x] Add `scripts/usage-snapshot.sh` for Copilot CLI sessions.
+- [x] Create `usage/usage-log.md` with recording rules and an example row (now `docs/usage/usage-log.md`).
+- [x] Add `scripts/usage-snapshot.sh` for Copilot CLI sessions (now `docs/scripts/usage-copilot.sh`).
 - [x] Add `scripts/usage-opencode.sh` (OpenCode, real USD) and `scripts/usage-claude.sh` (Claude Code, ccusage schema).
+- [x] Move `usage/` and `scripts/` under `docs/`; add `usage.sh` dispatcher plus `usage-codex.sh`, `usage-vscode.sh`, `usage-cursor.sh` collectors.
 - [ ] Revisit if a runner exposes a reliable automated per-session cost export.

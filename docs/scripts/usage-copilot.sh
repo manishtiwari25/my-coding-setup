@@ -3,7 +3,7 @@
 # Closed session  -> canonical session.shutdown.modelMetrics (real in/out/cache per model + AIC,
 #                    subagents included). AIC = totalNanoAiu / 1e9; 1 AIC ~= $0.01 USD.
 # Running session -> interim sum of main output + every subagent total (paste AIC from status line).
-# Always prints real values; never crashes. Usage: scripts/usage-snapshot.sh [session-id]
+# Always prints real values; never crashes. Usage: docs/scripts/usage-copilot.sh [session-id]
 set -eu
 STATE_DIR="${COPILOT_STATE_DIR:-$HOME/.copilot/session-state}"
 if [ "${1:-}" != "" ]; then EVENTS="$STATE_DIR/$1/events.jsonl"
@@ -23,6 +23,9 @@ for line in open(events, errors="ignore"):
     t=e.get("type"); d=e.get("data",{}) or {}
     if t=="session.start":
         model=d.get("selectedModel") or model; tier=d.get("contextTier"); effort=d.get("reasoningEffort")
+    elif t=="session.model_change":
+        model=d.get("newModel") or model
+        tier=d.get("contextTier") or tier; effort=d.get("reasoningEffort") or effort
     elif t=="assistant.message":
         ot=d.get("outputTokens",0) or 0
         if ot: m=d.get("model","?"); out[m]+=ot; msgs[m]+=1; main_out+=ot
@@ -32,7 +35,8 @@ for line in open(events, errors="ignore"):
         for k in ("systemTokens","conversationTokens","toolDefinitionsTokens","currentTokens"):
             if isinstance(d.get(k),int): ctx[k]=d[k]
         if t=="session.shutdown": shut=d
-print(f"Session : {sid[:8]}   Model: {model or 'mixed'}  tier={tier} effort={effort}")
+used=", ".join(m for m,_ in out.most_common()) or model or "?"   # real models seen in messages
+print(f"Session : {sid[:8]}   Model: {used}  (selected: {model})  tier={tier} effort={effort}")
 mm=(shut or {}).get("modelMetrics") or {}
 if mm:                                  # canonical real totals (incl. subagents)
     ti=to=tc=0; aic=0.0

@@ -35,7 +35,7 @@ Instructions for Claude-based agents working in this repository.
 
 ## Work Accounting & Cost Reporting (required)
 
-End every completed task or work response with a Work Accounting footer reporting model · tokens · cost, and append one entry per session to `usage/usage-log.md`. Use the real usage the active runner reports (Copilot CLI `/usage` + `/context`, OpenCode usage output, or the Anthropic/Claude API response usage) — never guess from a static price table. Figures are interim, timestamped snapshots finalized at session close; label anything the runtime does not expose as `≈ estimate`, and never fabricate or omit the footer. See `AGENTS.md` → "Work Accounting & Cost Reporting (required)" for the per-runner source map.
+End every completed task or work response with a Work Accounting footer reporting model · tokens · cost, and append one entry per session to `docs/usage/usage-log.md`. Use the real usage the active runner reports — `docs/scripts/usage.sh` is the unified entry point (Claude Code, Copilot CLI, OpenCode, Codex; CLI and IDE share the same logs) — never guess from a static price table. Figures are interim, timestamped snapshots finalized at session close; label anything the runtime does not expose as `≈ estimate` (or `n/a (plan)` for subscription runners that print no USD), and never fabricate or omit the footer. See `AGENTS.md` → "Work Accounting & Cost Reporting (required)" for the per-runner source map.
 
 Append this block at the very end of the final response:
 
@@ -43,6 +43,6 @@ Append this block at the very end of the final response:
 ---
 ### 🧮 Work Accounting
 - Model(s): <actual model id(s)> (+ sub-agent models, if any)
-- Tokens: <input> in / <output> out / <total> total   — source: <Copilot /usage + /context · OpenCode usage · API response>
-- Cost: <runner-native figure as of HH:MM>   — "$0.0123 USD" (OpenCode) · "~N AIC used @ HH:MM, interim" (Copilot) · "≈ estimate" only if nothing is exposed
+- Tokens: <input> in / <output> out / <total> total   — source: <Copilot /usage + /context · OpenCode usage · Claude Code session log · Codex session log · API response>
+- Cost: <runner-native figure as of HH:MM>   — "$0.0123 USD" (OpenCode/API) · "~N AIC used @ HH:MM, interim" (Copilot) · "n/a (plan)" (Claude Code/Codex subscription) · "≈ estimate" only if nothing is exposed
 ```
