@@ -13,5 +13,6 @@ Per-session work-accounting ledger. Each row records the **real usage reported b
 | 2026-06-27 | a1b2c3d4 | claude-opus-4 (GitHub Copilot) | ~5 AIC used @ 14:32 † | 12,480        | 7     | Example row — add Work Accounting rule, ledger & script. |
 | 2026-07-11 | 0a4a45c8 | claude-fable-5 (Claude Code)   | n/a (plan) @ 14:02 †  | 37,576        | 44    | Fix usage scripts, add codex/vscode/cursor collectors + unified usage.sh, move scripts/ & usage/ under docs/. |
 | 2026-07-11 | 15d5dbb1 | claude-fable-5 (Claude Code)   | n/a (plan) @ 14:20 †  | 8,032         | 7     | Add template-sync workflow + /template-sync Claude skill; wire into AGENTS.md routing. |
+| 2026-07-17 | 27d05029 | claude-fable-5 (Claude Code)   | n/a (plan) @ 06:44 †  | 9,074         | 15    | Move template-sync skill from .claude/skills/ into docs/prompts/shared/; add no-artifacts-outside-docs rule to AGENTS.md/CLAUDE.md; ignore tool dirs in .gitignore. |
 
 † Interim, timestamped snapshot — counters were still climbing at the recorded time; finalize at session close.

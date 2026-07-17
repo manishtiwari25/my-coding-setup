@@ -8,6 +8,7 @@ Instructions for Claude-based agents working in this repository.
 - Use the `docs/` control-plane folders as the source of truth: `docs/architecture/`, `docs/context/`, `docs/decisions/`, `docs/features/`, `docs/memory/`, `docs/plans/`, `docs/prompts/`, and `docs/workflows/`.
 - Keep this source repository generic, reusable, and product-code-free until a repo created from it defines a real product direction.
 - Do not create parallel root-level control-plane folders or a repo-local hidden control folder.
+- Do not add agent-authored artifacts (skills, prompts, workflows, scripts, rules, memory) anywhere outside `docs/`. Do not commit tool-specific directories such as `.claude/`, `.cursor/`, `.codex/`, or `.opencode/` — runner entry points belong in `docs/prompts/shared/` and reference `docs/workflows/`. The only root-level exceptions are the existing instruction files (`AGENTS.md`, `CLAUDE.md`, `README.md`, `.github/copilot-instructions.md`), standard config dotfiles already in the scaffold, and the `.template-sync` state file.
 - Do not assume stale product architecture or implementation choices. Inspect files or ask when context is missing.
 
 ## Operating Mode

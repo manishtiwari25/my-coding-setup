@@ -29,6 +29,7 @@ Future product code may live in `src/`, `apps/`, `packages/`, `services/`, or an
 ## Critical Rules
 
 - The `docs/` control plane is canonical. Do not create parallel root-level control-plane folders unless a new ADR changes this decision.
+- Do not add agent-authored artifacts (skills, prompts, workflows, scripts, rules, memory) anywhere outside `docs/`. Tool-specific directories such as `.claude/`, `.cursor/`, `.codex/`, or `.opencode/` must not be committed to this repository; runner entry points live in `docs/prompts/shared/` and reference `docs/workflows/`. The only root-level exceptions are the existing instruction files (`AGENTS.md`, `CLAUDE.md`, `README.md`, `.github/copilot-instructions.md`), standard config dotfiles already in the scaffold, and the `.template-sync` state file.
 - Do not assume any previous product architecture still exists.
 - Do not create or require a repo-local hidden control folder.
 - Do not add product code before the new direction is defined or explicitly requested.
@@ -105,7 +106,7 @@ Collector details: **Copilot CLI** (`usage-copilot.sh`) reads the local event lo
 | Learning or mistake       | `docs/memory/`                                                                                                   | `docs/memory/`                                                      |
 | Template maintenance      | `AGENTS.md`, `README.md`, `.github/copilot-instructions.md`, `docs/*/README.md`                                  | durable template docs/config                                        |
 | Bootstrap another repo    | `docs/workflows/bootstrap-control-plane.md`, `docs/prompts/shared/bootstrap-control-plane-in-new-repo.prompt.md` | `docs/prompts/shared/`, `docs/workflows/`                           |
-| Sync repo with template   | `docs/workflows/template-sync.md`, `.template-sync`                                                              | sync-safe template files, `.template-sync`                          |
+| Sync repo with template   | `docs/workflows/template-sync.md`, `docs/prompts/shared/template-sync.prompt.md`, `.template-sync`               | sync-safe template files, `.template-sync`                          |
 
 ## Product Direction Notes
 

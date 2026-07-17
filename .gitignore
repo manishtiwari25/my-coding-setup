@@ -63,8 +63,11 @@ venv/
 .coverage
 htmlcov/
 
-# Claude Code local settings (machine-specific permissions)
-.claude/settings.local.json
+# Tool-specific agent directories (never committed — see AGENTS.md Critical Rules)
+.claude/
+.cursor/
+.codex/
+.opencode/
 
 # Local caches and temp files
 .cache/

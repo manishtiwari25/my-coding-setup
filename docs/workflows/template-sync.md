@@ -1,6 +1,6 @@
 # Workflow - Template Sync
 
-Periodically check the upstream template repository for changes and pull the latest rules, workflows, scripts, and scaffold into a repo created from it. Model-agnostic: any agent or human can follow this by hand; Claude Code users can run the `/template-sync` skill (`.claude/skills/template-sync/`), which follows this workflow.
+Periodically check the upstream template repository for changes and pull the latest rules, workflows, scripts, and scaffold into a repo created from it. Model-agnostic: any agent or human can follow this by hand; `docs/prompts/shared/template-sync.prompt.md` is the reusable entry prompt that points any runner at this workflow.
 
 ## When to run
 
@@ -27,7 +27,7 @@ If the file does not exist yet, create it during the first sync. Repos created v
 
 | Class | Paths | Action |
 | --- | --- | --- |
-| **Sync-safe** (template-owned) | `docs/workflows/`, `docs/scripts/`, `docs/prompts/shared/`, `docs/*/_template.md`, `.claude/skills/`, `.editorconfig`, `.gitattributes` | Copy from template when changed upstream and unmodified locally; if modified both sides, escalate to review. |
+| **Sync-safe** (template-owned) | `docs/workflows/`, `docs/scripts/`, `docs/prompts/shared/`, `docs/*/_template.md`, `.editorconfig`, `.gitattributes` | Copy from template when changed upstream and unmodified locally; if modified both sides, escalate to review. |
 | **Review-first** (rules, customized per repo) | `AGENTS.md`, `CLAUDE.md`, `README.md`, `.github/copilot-instructions.md`, `docs/README.md`, `docs/*/README.md` | Never overwrite. Show the upstream diff and merge rule changes into the local version manually, preserving project-specific content. |
 | **Never sync** (project-owned content) | `docs/context/`, `docs/architecture/`, non-template files in `docs/decisions/`, `docs/features/`, `docs/memory/`, `docs/plans/`, `docs/prompts/` (outside `shared/`), `docs/usage/usage-log.md` rows, all product code | Leave untouched. |
 
@@ -53,7 +53,7 @@ If the file does not exist yet, create it during the first sync. Repos created v
 ## Periodic scheduling
 
 - **Any runner / human:** add a recurring reminder or CI job that runs steps 1–3 (check only) and opens an issue when the template has moved.
-- **Claude Code:** run `/template-sync` manually, or schedule it (e.g. a weekly scheduled agent/cron) in check-only mode and apply on demand.
+- **Any agent runner:** feed `docs/prompts/shared/template-sync.prompt.md` (optionally with `check`) to the agent manually, or schedule it (e.g. a weekly scheduled agent/cron) in check-only mode and apply on demand.
 - Keep applies interactive: rule changes (review-first files) should always pass through a human or an explicitly approved agent run.
 
 ## Notes
